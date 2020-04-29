@@ -4,7 +4,9 @@ Flip Card is a game where you have to click on a card to see what image is under
 
 ## User Stories
 
-- User can see a grid with 4 x 4 cards (n is an integer). All the cards are faced down initially (hidden state)
+- User can click a button to start the game
+
+- User can see a grid with 4 x 4 cards. All the cards are faced down initially (hidden state)
 
 - User can click on any card to unveil the image that is underneath it (change it to visible state). The image will be displayed until the user clicks on a 2nd card
 
