@@ -1,30 +1,26 @@
-import React from 'react';
-import Card from './Components/Card';
-import CardsInfo from './Components/CardsInfo';
+import React, { useState } from 'react';
 
-import './App.css';
+import Board from './Board';
 
-const names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-const handleClick = (id) => {
-  console.log(id);
-};
-
-function App() {
+const App = () => {
+  const [start, setStart] = useState(false);
+  const gameStart = () => setStart(true);
   return (
-    <div className="App">
+    <div className="container">
       <h1>Flip Card Game</h1>
-      {CardsInfo(names).map((card) => (
-        <Card
-          key={card.id}
-          id={card.id}
-          name={card.name}
-          flipped={false}
-          disabled={false}
-          handleClick={handleClick}
-        />
-      ))}
+      {!start && (
+        <div>
+          <p>Do you have a strong memory ? let's see ...</p>
+          <p>click on a card to flip it and try to make a match</p>
+          <button onClick={gameStart} type="button" className="game-start-btn">
+            Game Start
+          </button>
+        </div>
+      )}
+      <hr />
+      {start && <Board />}
     </div>
   );
-}
+};
 
 export default App;
