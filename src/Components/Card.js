@@ -8,7 +8,9 @@ const Card = ({ id, name, flipped, handleClick, eliminated, disabled }) => {
       <div
         onClick={() => (disabled ? null : handleClick(id))}
         className="front"
-      />
+      >
+        front
+      </div>
 
       <div className="back">
         <p>{name}</p>
