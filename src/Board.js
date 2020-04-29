@@ -48,7 +48,7 @@ const Board = () => {
     <div>
       <div className={eliminated.length === 16 ? 'apper' : 'disapper'}>
         <p>Congratulation , you won</p>
-        <button type="button" onClick={playAgain}>
+        <button type="button" className="game-start-btn" onClick={playAgain}>
           Play Again
         </button>
       </div>

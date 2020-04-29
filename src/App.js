@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import Board from './Board';
+
 const App = () => {
   const [start, setStart] = useState(false);
   const gameStart = () => setStart(true);
@@ -16,8 +18,7 @@ const App = () => {
         </div>
       )}
       <hr />
-      {/* {start && <Board />} */}
-      {/* to be uncommented when Board component is ready */}
+      {start && <Board />}
     </div>
   );
 };
