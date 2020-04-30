@@ -34,6 +34,7 @@ const Board = () => {
   const playAgain = () => {
     setEliminated([]);
     clear();
+    setCards(cardsGenerator(names));
   };
 
   const handleClick = (id) => {
