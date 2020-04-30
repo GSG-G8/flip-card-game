@@ -37,16 +37,19 @@ const Board = () => {
     setCards(cardsGenerator(names));
   };
 
-  const sameCard = (id) => id === flipped[0];
+  const sameCard = (id) => flipped.includes(id);
 
   const handleClick = (id) => {
     setDisabled(true);
     if (flipped.length === 0) {
-      setDisabled(false);
       setFlipped([id]);
+      setDisabled(false);
       return;
     }
-    if (sameCard(id)) return;
+    if (sameCard(id)) {
+      setDisabled(false);
+      return;
+    }
     setFlipped([...flipped, id]);
     if (isMatch(id)) success(id);
     else setTimeout(() => clear(), 1000);
