@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import ReactCardFlip from 'react-card-flip';
 import PropTypes from 'prop-types';
@@ -7,12 +9,10 @@ const Card = ({ id, name, flipped, handleClick, eliminated, disabled }) => {
     <ReactCardFlip isFlipped={flipped || eliminated} flipDirection="horizontal">
       <div
         onClick={() => (disabled ? null : handleClick(id))}
-        className="front"
-      >
-        front
-      </div>
+        className="front-card"
+      />
 
-      <div className="back">
+      <div className="back-card">
         <p>{name}</p>
       </div>
     </ReactCardFlip>

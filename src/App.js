@@ -1,6 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { useState } from 'react';
 
-import Board from './Board';
+import Board from './Components/Board';
 
 const App = () => {
   const [start, setStart] = useState(false);
