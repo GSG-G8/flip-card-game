@@ -1,11 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-import Board from './Components/Board';
+import Board from "./Components/Board";
 
 const App = () => {
   const [start, setStart] = useState(false);
+  const [timer, setTimer] = useState(0);
+
   const gameStart = () => setStart(true);
+
+  useEffect(() => {
+    const timerFunc = setTimeout(() => setTimer((t) => t + 1), 1000);
+    
+    return () => clearTimeout(timerFunc);
+  });
+
   return (
     <div className="container">
       <h1>Flip Card Game</h1>
