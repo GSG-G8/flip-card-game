@@ -5,7 +5,9 @@ import Board from './Components/Board';
 
 const App = () => {
   const [start, setStart] = useState(false);
+
   const gameStart = () => setStart(true);
+
   return (
     <div className="container">
       <h1>Flip Card Game</h1>
