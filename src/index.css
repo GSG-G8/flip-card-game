@@ -2,9 +2,9 @@ body {
   text-align: center;
   font-family: sans-serif;
 }
-.container{
-    width: 80%;
-    margin: auto;
+.container {
+  width: 80%;
+  margin: auto;
 }
 .game-start-btn {
   box-shadow: inset 0px 1px 0px 0px #91b8b3;
@@ -34,7 +34,6 @@ body {
   opacity: 1;
   transition: opacity ease-out 1s;
 }
-
 
 .grid {
   font-size: 1rem;
