@@ -59,7 +59,7 @@ const Board = ({ level }) => {
     else setTimeout(() => clear(), 1000);
   };
 
-  if (eliminated.length === level ** 2) {
+  if (eliminated.length === level) {
     setEliminated([]);
     setGameOver(true);
   }
@@ -67,7 +67,7 @@ const Board = ({ level }) => {
   return (
     <div>
       {gameOver ? (
-        <div className="appear">
+        <div>
           <p>Congratulation , you won</p>
           <button type="button" className="game-start-btn" onClick={playAgain}>
             Play Again
@@ -96,7 +96,7 @@ const Board = ({ level }) => {
 };
 
 Board.propTypes = {
-  level: propTypes.string.isRequired,
+  level: propTypes.number.isRequired,
 };
 
 export default Board;

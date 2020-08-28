@@ -29,7 +29,7 @@ const App = () => {
                 type="radio"
                 id="easy"
                 name="level"
-                value="4"
+                value="24"
                 onChange={selectLevel}
               />
               Easy
@@ -39,7 +39,7 @@ const App = () => {
                 type="radio"
                 id="medium"
                 name="level"
-                value="6"
+                value="30"
                 onChange={selectLevel}
               />
               Medium
@@ -49,7 +49,7 @@ const App = () => {
                 type="radio"
                 id="hard"
                 name="level"
-                value="8"
+                value="48"
                 onChange={selectLevel}
               />
               Hard
@@ -61,7 +61,7 @@ const App = () => {
         </div>
       )}
       <hr />
-      {start && <Board level={level} />}
+      {start && <Board level={Number(level)} />}
     </div>
   );
 };

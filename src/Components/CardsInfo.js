@@ -23,28 +23,23 @@ export const names = [
   'V',
   'W',
   'X',
-  'Y',
-  'Z',
-  'AA',
-  'BB',
-  'CC',
-  'DD',
-  'EE',
-  'FF',
 ];
 
 export const cardsGenerator = (arr, limit) => {
   let id = 0;
-  return arr.slice(0, limit ** 2 / 2).reduce((acc, name) => {
-    const clone = [...acc];
-    clone.push({
-      id: (id += 1),
-      name,
-    });
-    clone.push({
-      id: (id += 1),
-      name,
-    });
-    return clone;
-  }, []);
+  return arr
+    .slice(0, limit / 2)
+    .reduce((acc, name) => {
+      const clone = [...acc];
+      clone.push({
+        id: (id += 1),
+        name,
+      });
+      clone.push({
+        id: (id += 1),
+        name,
+      });
+      return clone;
+    }, [])
+    .sort(() => 0.5 - Math.random());
 };
