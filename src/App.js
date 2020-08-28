@@ -61,7 +61,7 @@ const App = () => {
         </div>
       )}
       <hr />
-      {start && <Board />}
+      {start && <Board level={level} />}
     </div>
   );
 };

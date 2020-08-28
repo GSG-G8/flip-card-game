@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import propTypes from 'prop-types';
 
 import Card from './Card';
-import cardsGenerator from './CardsInfo';
+import { names, cardsGenerator } from './CardsInfo';
 import useTimer from './useTimer';
 
-const names = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-
-const Board = () => {
+const Board = ({ level }) => {
   const [cards, setCards] = useState([]);
   const [flipped, setFlipped] = useState([]);
   const [eliminated, setEliminated] = useState([]);
@@ -16,8 +15,8 @@ const Board = () => {
   const { roundTime, setRoundTime } = useTimer(gameOver);
 
   useEffect(() => {
-    setCards(cardsGenerator(names));
-  }, []);
+    setCards(cardsGenerator(names, level));
+  }, [level]);
 
   const clear = () => {
     setFlipped([]);
@@ -39,7 +38,7 @@ const Board = () => {
     clear();
     setGameOver(false);
     setRoundTime(0);
-    setCards(cardsGenerator(names));
+    setCards(cardsGenerator(names, level));
   };
 
   const sameCard = (id) => flipped.includes(id);
@@ -60,7 +59,7 @@ const Board = () => {
     else setTimeout(() => clear(), 1000);
   };
 
-  if (eliminated.length === 16) {
+  if (eliminated.length === level ** 2) {
     setEliminated([]);
     setGameOver(true);
   }
@@ -94,6 +93,10 @@ const Board = () => {
       )}
     </div>
   );
+};
+
+Board.propTypes = {
+  level: propTypes.string.isRequired,
 };
 
 export default Board;
