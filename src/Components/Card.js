@@ -4,6 +4,8 @@ import React from 'react';
 import ReactCardFlip from 'react-card-flip';
 import PropTypes from 'prop-types';
 
+import * as images from '../assets';
+
 const Card = ({ id, name, flipped, handleClick, eliminated, disabled }) => {
   return (
     <ReactCardFlip isFlipped={flipped || eliminated} flipDirection="horizontal">
@@ -12,9 +14,14 @@ const Card = ({ id, name, flipped, handleClick, eliminated, disabled }) => {
         className="front-card"
       />
 
-      <div className="back-card">
-        <p>{name}</p>
-      </div>
+      <div
+        className="back-card"
+        style={{
+          background: `url(${images[name]})`,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
     </ReactCardFlip>
   );
 };
