@@ -29,7 +29,7 @@ const App = () => {
                 type="radio"
                 id="easy"
                 name="level"
-                value="24"
+                value="20"
                 onChange={selectLevel}
               />
               Easy
@@ -49,7 +49,7 @@ const App = () => {
                 type="radio"
                 id="hard"
                 name="level"
-                value="48"
+                value="40"
                 onChange={selectLevel}
               />
               Hard

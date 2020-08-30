@@ -34,32 +34,21 @@ body {
 .grid {
   font-size: 1rem;
   display: grid;
-  grid-template-columns: repeat(6, 5rem);
+  grid-template-columns: repeat(auto-fill, 6rem);
   gap: 0.25rem;
   justify-content: center;
 }
 
 .react-card-flip {
-  width: 5rem;
-  height: 5rem;
+  width: 6rem;
+  height: 8rem;
   cursor: pointer;
 }
 
-.front-card {
-  background-color: blue;
-  height: 100%;
-  border-radius: 1rem;
-}
+.front-card,
 .back-card {
-  display: grid;
-  background-color: red;
   height: 100%;
   border-radius: 1rem;
-}
-
-.back-card > p {
-  align-self: center;
-  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 1200px) {
