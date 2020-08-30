@@ -18,34 +18,6 @@ import Q from './Q.jpeg';
 import R from './R.png';
 import S from './S.png';
 import T from './T.jpg';
-import U from './U.jpg';
-import V from './V.jpg';
-import W from './W.png';
-import X from './X.jpg';
+import backCard from './card-back.png';
 
-export {
-  A,
-  B,
-  C,
-  D,
-  E,
-  F,
-  G,
-  H,
-  I,
-  J,
-  K,
-  L,
-  M,
-  N,
-  O,
-  P,
-  Q,
-  R,
-  S,
-  T,
-  U,
-  V,
-  W,
-  X,
-};
+export { A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, backCard };

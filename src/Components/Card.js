@@ -11,11 +11,16 @@ const Card = ({ id, name, flipped, handleClick, eliminated, disabled }) => {
     <ReactCardFlip isFlipped={flipped || eliminated} flipDirection="horizontal">
       <div
         onClick={() => (disabled ? null : handleClick(id))}
-        className="front-card"
+        className="back-card"
+        style={{
+          background: `url(${images.backCard})`,
+          backgroundSize: '100% 100%',
+          backgroundRepeat: 'no-repeat',
+        }}
       />
 
       <div
-        className="back-card"
+        className="front-card"
         style={{
           background: `url(${images[name]})`,
           backgroundSize: '100% 100%',
