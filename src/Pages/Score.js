@@ -1,53 +1,73 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import useLocalStorage from 'react-use-localstorage';
+
+const orderScore = (arr) => arr.sort((a, b) => b.score - a.score);
 
 const Score = () => {
+  const location = useLocation();
   const history = useHistory();
-  const [scores, setScores] = useState([]);
+  const [levelsScoresStringified] = useLocalStorage(
+    'scores',
+    JSON.stringify({
+      easy: [],
+      medium: [],
+      hard: [],
+    })
+  );
 
-  const levels = {
-    easy: [
-      {
-        id: 'a1s-s2d-sa5',
-        player: 'Ahmed Safi',
-        score: '12356',
-      },
-    ],
-    medium: [
-      {
-        id: 'a1s-s2d-sa6',
-        player: 'Ahmed Safi',
-        score: '12356',
-      },
-    ],
-    hard: [
-      {
-        id: 'a1s-s2d-sa7',
-        player: 'Ahmed Safi',
-        score: '12356',
-      },
-    ],
-  };
+  const [roundLevel, setRoundLevel] = useState(
+    () => location.state?.level || 'easy'
+  );
+
+  const winnerId = location.state?.id;
+
+  const levelsScores = JSON.parse(levelsScoresStringified);
+
+  const [scores, setScores] = useState(() =>
+    orderScore(levelsScores[roundLevel || 'easy'])
+  );
 
   return (
     <div>
-      <button type="button" onClick={() => history.goBack()}>
+      <button type="button" className="btn" onClick={() => history.push('./')}>
         Go Back
       </button>
       <section>
         <h1>Top Scores</h1>
         <div>
-          <button type="button" onClick={() => setScores(levels.easy)}>
+          <button
+            type="button"
+            className={roundLevel === 'easy' ? 'btn-clicked' : 'btn'}
+            onClick={() => {
+              setScores(orderScore(levelsScores.easy));
+              setRoundLevel('easy');
+            }}
+          >
             Easy
           </button>
-          <button type="button" onClick={() => setScores(levels.medium)}>
+          <button
+            type="button"
+            className={roundLevel === 'medium' ? 'btn-clicked' : 'btn'}
+            onClick={() => {
+              setScores(orderScore(levelsScores.medium));
+              setRoundLevel('medium');
+            }}
+          >
             Medium
           </button>
-          <button type="button" onClick={() => setScores(levels.hard)}>
+          <button
+            type="button"
+            className={roundLevel === 'hard' ? 'btn-clicked' : 'btn'}
+            onClick={() => {
+              setScores(orderScore(levelsScores.hard));
+              setRoundLevel('hard');
+            }}
+          >
             Hard
           </button>
         </div>
-        <table>
+        <table className="score-table">
           <thead>
             <tr>
               <th>Player</th>
@@ -56,7 +76,10 @@ const Score = () => {
           </thead>
           <tbody>
             {scores.map(({ id, player, score }) => (
-              <tr key={id}>
+              <tr
+                key={id}
+                className={winnerId === id ? 'score-table__winner-strip' : ''}
+              >
                 <td>{player}</td>
                 <td>{score}</td>
               </tr>

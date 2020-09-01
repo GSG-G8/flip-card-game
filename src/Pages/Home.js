@@ -3,6 +3,12 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Board from '../Components/Board';
 
+const levels = {
+  easy: 20,
+  medium: 30,
+  hard: 40,
+};
+
 const Home = () => {
   const [start, setStart] = useState(false);
   const [level, setLevel] = useState(null);
@@ -31,7 +37,7 @@ const Home = () => {
                 type="radio"
                 id="easy"
                 name="level"
-                value="20"
+                value="easy"
                 onChange={selectLevel}
               />
               Easy
@@ -41,7 +47,7 @@ const Home = () => {
                 type="radio"
                 id="medium"
                 name="level"
-                value="30"
+                value="medium"
                 onChange={selectLevel}
               />
               Medium
@@ -51,26 +57,26 @@ const Home = () => {
                 type="radio"
                 id="hard"
                 name="level"
-                value="40"
+                value="hard"
                 onChange={selectLevel}
               />
               Hard
             </label>
           </div>
-          <button onClick={gameStart} type="button" className="game-start-btn">
+          <button onClick={gameStart} type="button" className="btn">
             Game Start
           </button>
           <button
             onClick={() => history.push('/score')}
             type="button"
-            className="game-start-btn"
+            className="btn"
           >
             See top scores
           </button>
         </div>
       )}
       <hr />
-      {start && <Board level={Number(level)} />}
+      {start && <Board level={level} cardsNum={levels[level]} />}
     </div>
   );
 };
