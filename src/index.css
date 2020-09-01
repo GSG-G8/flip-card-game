@@ -111,6 +111,13 @@ body {
   background: #d0e4f5;
 }
 
+.loader {
+  width: 4rem;
+  height: 4rem;
+  margin: 8rem auto;
+  animation: spin 1s linear infinite;
+}
+
 @media only screen and (max-width: 800px) {
   html {
     font-size: 14px;
@@ -120,5 +127,14 @@ body {
 @media only screen and (max-width: 600px) {
   html {
     font-size: 12px;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
