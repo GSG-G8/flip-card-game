@@ -1,10 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, Suspense } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Loader from '../Components/Loader';
-
-const Board = React.lazy(() => import('../Components/Board'));
+import Board from '../Components/Board';
 
 const levels = {
   easy: 20,
@@ -79,11 +77,7 @@ const Home = () => {
         </div>
       )}
       <hr />
-      {start && (
-        <Suspense fallback={<Loader />}>
-          <Board level={level} cardsNum={levels[level]} />
-        </Suspense>
-      )}
+      {start && <Board level={level} cardsNum={levels[level]} />}
     </div>
   );
 };
