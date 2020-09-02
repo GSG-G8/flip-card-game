@@ -54,7 +54,6 @@ body {
 .front-card,
 .back-card {
   height: 100%;
-  border-radius: 1rem;
 }
 
 .popup-container {
