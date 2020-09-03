@@ -39,4 +39,5 @@ Card.propTypes = {
   eliminated: PropTypes.bool.isRequired,
   disabled: PropTypes.bool.isRequired,
 };
-export default Card;
+
+export default React.memo(Card);
