@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import propTypes from 'prop-types';
 
-import Card from './Card';
+import Cards from './Cards';
 import { names, cardsGenerator } from './CardsInfo';
 import useTimer from './useTimer';
 import GameOver from './GameOver';
@@ -53,6 +53,8 @@ const Board = ({ level, cardsNum }) => {
     else setTimeout(() => clear(), 1000);
   };
 
+  const memoizedHandleClick = useCallback(handleClick, [flipped]);
+
   if (eliminated.length === cardsNum) {
     setEliminated([]);
     setGameOver(true);
@@ -66,17 +68,13 @@ const Board = ({ level, cardsNum }) => {
       <div>
         <div>{new Date(roundTime * 1000).toISOString().substr(11, 8)}</div>
         <div className="grid">
-          {cards.map((card) => (
-            <Card
-              key={card.id}
-              id={card.id}
-              name={card.name}
-              flipped={flipped.includes(card.id)}
-              eliminated={eliminated.includes(card.id)}
-              handleClick={handleClick}
-              disabled={disabled}
-            />
-          ))}
+          <Cards
+            cards={cards}
+            flipped={flipped}
+            eliminated={eliminated}
+            handleClick={memoizedHandleClick}
+            disabled={disabled}
+          />
         </div>
       </div>
     </div>
